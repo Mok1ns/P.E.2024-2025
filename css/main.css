@@ -16,3 +16,9 @@ body {
     background-image: url(../image/background.jpg);
     background-size: cover;
 }
+
+div.graphique{
+    width: 45%; 
+    margin: auto;
+    background-color: white;
+}
