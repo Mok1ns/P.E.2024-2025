@@ -15,9 +15,34 @@
     <hr>
     <article>
         <h1>blabla</h1>
-        <div class="graphique">
-            <canvas id="internetChart"></canvas>
-        </div>
+        <section>
+
+            <select class="liste_pays">
+                <option value="">--Pays Désiré--</option>
+                <option value="usa">USA</option>
+                <option value="japon">Japon</option>
+                <option value="france">France</option>
+                <option value="bangladesh">Bangladesh</option>
+                <option value="kenya">Kenya</option>
+                <option value="burundi">burundi</option>
+            </select>
+
+            <div class="graphique">
+                <canvas id="internetChart"></canvas>
+            </div>
+
+            
+            <div class="info" style="background-color: white;">
+                <!--Image du drapeau-->
+                <img src="" alt="image drapeau">
+                <h5>nom du pays</h5>
+                <h5>PIB</h5>
+                <h5>Nombre d'habitants</h5>
+                <h5>Pourcentage d'accès à Internet</h5>
+            </div>
+
+
+        </section>
         <div class="pays_diff">
 
             <div class="usa">
@@ -40,24 +65,26 @@
             </div>
         </div>
         <div class="boutons">
+            <h3>Investissement dans les petites infrastructures:</h3>
             <div class="petites_infra">
                 <button>+25 WLC</button>
                 <button>+15 Cable fibre optique</button>
                 <button>+4 Routeur</button>
                 <button>+40 Répeteur wifi</button>
             </div>
+            <h3>Investissement dans des moyens supplémentaires</h3>
             <div class="pt_relais">
                 <button>+3 Drône relais wifi</button>
                 <button>+20 Ingénieur informaticien</button>
                 <button>+1 Cybercafé relais</button>
                 <button>+1 Satellite Internet</button>
             </div>
+            <h3>Mise en place de grandes technologies </h3>
             <div class="passages">
                 <button>Passage à la fibre optique</button>
                 <button>Passage à la 5G</button>
             </div>
-        </div>
-    </article>
+        </div>    </article>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/main.js"></script>
 </body>
