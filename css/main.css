@@ -1,4 +1,18 @@
 header{
     display: flex;
     justify-content: space-between;
+    background-color: lightgray;
+}
+
+header img{
+    width: 150px;
+}
+
+header a{
+    margin-top: 30px;
+}
+
+body {
+    background-image: url(../image/background.jpg);
+    background-size: cover;
 }
