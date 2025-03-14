@@ -61,7 +61,8 @@ select{
     margin: 10px;
     margin-left: 100px;
     border-radius: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
+    margin-top: 100px;
     border: 2px solid #1f693e;
     background-color: rgba(255, 255, 255, 0.9);
     font-size: 16px;
@@ -76,5 +77,11 @@ select{
 }
 
 div.info{
-    background-color: white;
+    padding: 20px;
+    background-color: #34495e71;
+    border-radius: 10px;
+    margin-top: 35px;
+    height: 400px;
+    width: 400px;
+    margin-left: 15px;
 }
