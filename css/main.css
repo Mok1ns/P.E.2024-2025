@@ -8,6 +8,10 @@ header img{
     width: 150px;
 }
 
+header h1{
+    margin-right: 50px;
+}
+
 header a{
     margin-top: 30px;
 }
@@ -21,4 +25,27 @@ div.graphique{
     width: 45%; 
     margin: auto;
     background-color: white;
+}
+
+article h1{
+    color: white;
+    text-align: center;
+}
+
+div.boutons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 150px;
+}
+
+div.petites_infra{
+    background-color: red;
+}
+
+div.pt_relais{
+    background-color: green;
+}
+
+div.passages{
+    background-color: blue;
 }
