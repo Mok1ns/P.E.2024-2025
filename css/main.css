@@ -38,6 +38,11 @@ div.boutons{
     margin-top: 150px;
 }
 
+div.boutons h3{
+    color: white;
+
+}
+
 div.petites_infra{
     background-color: red;
 }
@@ -73,7 +78,7 @@ select{
 
 .liste_pays{
     width: 300px;
-    margin-right: 100xp;
+    text-align: center;
 }
 
 div.info{
