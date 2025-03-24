@@ -36,7 +36,10 @@ div.boutons{
     display: flex;
     justify-content: space-evenly;
     margin-top: 150px;
+
 }
+
+
 
 div.boutons h3{
     color: white;
