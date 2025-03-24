@@ -94,6 +94,20 @@ div.boutons {
     margin-top: 30px;
 }
 
+#toggle {
+    background: linear-gradient(135deg, #225336, #34c06e);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 100px   ;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
 div.action2{
     border-radius: 12px;
     width: 320px;
