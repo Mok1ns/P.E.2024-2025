@@ -1,10 +1,10 @@
         // Données du graphique
         const data = {
-            labels: ["France", "USA", "Brésil", "Inde", "Nigeria"],
+            labels: ["USA", "Japon", "France", "Bangladesh", "Kenya","Burundi"],
             datasets: [{
                 label: "Accès à Internet (%)",
-                data: [92, 89, 78, 52, 45], // Pourcentages fictifs
-                backgroundColor: ["blue", "red", "green", "orange", "purple"]
+                data: [92, 89, 78, 52, 45,32], // Pourcentages fictifs
+                backgroundColor: ["blue", "red", "green", "orange", "purple","grey"]
             }]
         };
 
