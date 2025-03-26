@@ -50,7 +50,7 @@ header img{
 
 header h1{
     margin-right: 50px;
-    color: #00796b;
+    color: #0ab9a5;
 }
 
 header a{
@@ -97,7 +97,7 @@ div.boutons {
 }
 
 #toggle {
-    background: linear-gradient(135deg, #225336, #34c06e);
+    background: linear-gradient(135deg, #00d1b2, #34c06e);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -115,7 +115,6 @@ div.action2{
     width: 320px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    justify-content: right;
 }
 
 div.action {
@@ -178,7 +177,7 @@ select{
     text-align: center;
 }
 
-div.info {
+.info{
     background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     padding: 20px;
@@ -188,9 +187,3 @@ div.info {
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-
-div.info img {
-    width: 80px;
-    margin-bottom: 10px;
-}
-
