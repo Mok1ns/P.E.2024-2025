@@ -37,6 +37,8 @@ header a {
     font-weight: 500;
     transition: 0.3s;
     margin-bottom: 10px;
+    height: 20px;
+    margin-right: 20px;
 }
 
 header a:hover {
@@ -46,6 +48,7 @@ header a:hover {
 
 header img{
     width: 150px;
+    filter: invert();
 }
 
 header h1{
@@ -69,7 +72,7 @@ div.graphique {
     width: 650px;
     height: 300px;
     border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
     text-align: center;
     margin-left: 100px;
 }
@@ -112,9 +115,8 @@ div.boutons {
 
 div.action2{
     border-radius: 12px;
-    width: 320px;
+    width: 400px;
     text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 div.action {
@@ -145,6 +147,7 @@ div.action button {
     transition: 0.3s;
     cursor: pointer;
 }
+
 
 div.action button:hover {
     background: #00796b;
@@ -182,8 +185,9 @@ select{
     border-radius: 10px;
     padding: 20px;
     width: 350px;
-    height: 250px;
+    height: 630px;
     margin-right: 100px;
     text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+    margin-top: -420px;
 }
