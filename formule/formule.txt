@@ -11,5 +11,3 @@ si passage à la 5G et fibre optique:x*3
 formule officielle:
 
 =92/(1+EXP(-3,93*(10^(-9))*(L2-604064887,4)))+5
-
-
