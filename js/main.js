@@ -2,14 +2,7 @@
 
 const ctx = document.getElementById("internetChart").getContext("2d");
 
-const data = {
-    labels: ["USA", "Japon", "France", "Bangladesh", "Kenya", "Burundi"],
-    datasets: [{
-        label: "Accès à Internet (%)",
-        data: [97, 92, 88, 16, 15, 13],
-        backgroundColor: ["blue", "red", "green", "orange", "purple", "grey"]
-    }]
-};
+
 
 let WLC = {
     "usa": 130000,
@@ -109,6 +102,17 @@ let data_centers = {
     "kenya": 50,  // Example value for Kenya
     "burundi": 10  // Example value for Burundi
 };
+
+
+const data = {
+    labels: ["USA", "Japon", "France", "Bangladesh", "Kenya", "Burundi"],
+    datasets: [{
+        label: "Accès à Internet (%)",
+        data: [97, 92, 88, 16, 15, 13],
+        backgroundColor: ["blue", "red", "green", "orange", "purple", "grey"]
+    }]
+};
+
 
 const config = {
     type: "bar",
@@ -214,6 +218,48 @@ function updateInfo(country) {
 }
 
 
+function calculerX(pays){
+    pays = pays.toLowerCase();
+
+    let x =
+    400000 * (satellites[pays] || 0) +
+    10 * (WLC[pays] || 0) +
+    8 * (cables_fibre[pays] || 0) +
+    12 * (repeteurs[pays] || 0) +
+    25 * (drones[pays] || 0) +
+    100000 * (data_centers[pays] || 0) +
+    15 * (ingenieurs[pays] || 0) +
+    (routeurs[pays] || 0) +
+    500 * (cybercafes[pays] || 0);
+
+    if (fibre_optique[pays] === 1 && alacinqg[pays] === 1) {
+        x *= 3; // Par exemple, si les deux sont à 1, on multiplie par 3
+    }
+
+    if (fibre_optique[pays] === 1 && alacinqg[pays] === 0) {
+        x *= 2; // Par exemple, si les deux sont à 1, on multiplie par 3
+    }
+
+    if (fibre_optique[pays] === 0 && alacinqg[pays] === 1) {
+        x *= 1,5; // Par exemple, si les deux sont à 1, on multiplie par 3
+    }
+
+    return x;
+}
+
+function calculImage(x) {
+    // Calcul de l'image selon la formule fournie
+    let result = 92 / (1 + Math.exp(-3.93 * Math.pow(10, -9) * (x - 604064887.4))) + 5;
+    return result;
+}
+
+let pays = "Bangladesh";
+let score = calculerX(pays);
+let pd = calculImage(score);
+console.log(`Score d'infrastructure pour ${pays} :`, score, pd);
+
+
+
 
 
 function increaseWLC(country, amount) {
@@ -307,10 +353,22 @@ document.getElementById("increase").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 2, 100);
-        myChart.update();
-        increaseWLC(pays, 25);
-        myChart.update();
+        
+        let amount = 25 ;
+        increaseWLC(pays, amount);
+        // Recalculer le score et l'image
+        let score = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd = calculImage(score);  // Calculer l'image
+
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi = pd.toFixed(1);  // Arrondir à un chiffre après la virgule
+        pdArrondi = parseFloat(pdArrondi); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi; // Mettre à jour la valeur du dataset
+        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] = pd, 100);
+        updateInfo(pays);  // Mettre à jour les infos
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -574,5 +632,5 @@ document.getElementById("toggle").addEventListener("click", () => {
         textes[14].textContent = `Alacinqg : ${dataPays[pays].alacinqg}`;
         textes[15].textContent = `Accès à Internet : ${myChart.data.datasets[0].data[selectedIndex]}%`;
     }
-        
+
 });
