@@ -6,7 +6,7 @@ const data = {
     labels: ["USA", "Japon", "France", "Bangladesh", "Kenya", "Burundi"],
     datasets: [{
         label: "Accès à Internet (%)",
-        data: [32, 19, 28, 12, 5, 2],
+        data: [97, 92, 88, 16, 15, 13],
         backgroundColor: ["blue", "red", "green", "orange", "purple", "grey"]
     }]
 };
