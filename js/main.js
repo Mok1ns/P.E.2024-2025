@@ -253,12 +253,6 @@ function calculImage(x) {
     return result;
 }
 
-let pays = "Bangladesh";
-let score = calculerX(pays);
-let pd = calculImage(score);
-console.log(`Score d'infrastructure pour ${pays} :`, score, pd);
-
-
 
 
 
@@ -356,6 +350,7 @@ document.getElementById("increase").addEventListener("click", () => {
         
         let amount = 25 ;
         increaseWLC(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd = calculImage(score);  // Calculer l'image
@@ -366,8 +361,6 @@ document.getElementById("increase").addEventListener("click", () => {
 
         // Mettre à jour le graphique avec la nouvelle valeur arrondie
         myChart.data.datasets[0].data[selectedIndex] = pdArrondi; // Mettre à jour la valeur du dataset
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] = pd, 100);
-        updateInfo(pays);  // Mettre à jour les infos
         myChart.update();  // Mettre à jour le graphique
     }
 });
