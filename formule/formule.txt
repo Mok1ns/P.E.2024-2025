@@ -1,0 +1,15 @@
+la formule pour déterminer le pourcentage:
+
+100/(1+exp(-0,1x))
+
+possibilité de changer le -0.1 pour changer la pente de la fonction
+
+x=400000*nbr_satellites+10*nbr_WLC+8*nbr_cables_fibres+12*nbr_repeteurs_wifi+25*nbr_drones+100000*nbr_datacenters+15*nbr_ingénieurs+nbr_routeurs+500*nbr_cybercafes
+si passage à la fibre optique:x*2
+si passage à la 5G et fibre optique:x*3
+
+formule officielle:
+
+=92/(1+EXP(-3,93*(10^(-9))*(L2-604064887,4)))+5
+
+
