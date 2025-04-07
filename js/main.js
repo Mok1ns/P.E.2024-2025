@@ -253,6 +253,37 @@ function calculImage(x) {
     return result;
 }
 
+<<<<<<< HEAD
+=======
+let pays = "Bangladesh";
+let score = calculerX(pays);
+let pd = calculImage(score);
+console.log(`Score d'infrastructure pour ${pays} :`, score, pd);
+
+// Fonction pour arrondir au centième
+function roundToHundredths(value) {
+    return parseFloat(value.toFixed(1)); // Arrondir à 2 décimales
+}
+
+// Fonction pour mettre à jour les données dans le graphique
+function updateChartData() {
+    // Calculer le score et appliquer la fonction calculImage pour chaque pays
+    const updatedData = data.labels.map(country => {
+        let score = calculerX(country);   // Calcul du score basé sur les données du pays
+        let imageResult = calculImage(score); // Appliquer la fonction calculImage sur ce score
+        return roundToHundredths(imageResult); // Arrondir le résultat au centième
+    });
+
+    // Mettre à jour les données dans le graphique
+    data.datasets[0].data = updatedData;
+
+    // Mettre à jour le graphique
+    myChart.update();
+}
+
+// Appeler la fonction pour mettre à jour les données du graphique
+updateChartData();
+>>>>>>> 39ac6073f9ad420f12e4eaccfcf4516079e46a36
 
 
 
@@ -347,6 +378,7 @@ document.getElementById("increase").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
+<<<<<<< HEAD
         
         let amount = 25 ;
         increaseWLC(pays, amount);
@@ -362,6 +394,12 @@ document.getElementById("increase").addEventListener("click", () => {
         // Mettre à jour le graphique avec la nouvelle valeur arrondie
         myChart.data.datasets[0].data[selectedIndex] = pdArrondi; // Mettre à jour la valeur du dataset
         myChart.update();  // Mettre à jour le graphique
+=======
+        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 2, 100);
+        myChart.update();
+        increaseWLC(pays, 25);
+        myChart.update();
+>>>>>>> 39ac6073f9ad420f12e4eaccfcf4516079e46a36
     }
 });
 
