@@ -350,15 +350,14 @@ document.getElementById("increase").addEventListener("click", () => {
         increaseWLC(pays, amount);
         updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
-        let score = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd = calculImage(score);  // Calculer l'image
-
+        let score_wlc = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_wlc = calculImage(score_wlc);  // Calculer l'image
         // Arrondir la valeur calculée au dixième près
-        let pdArrondi = pd.toFixed(1);  // Arrondir à un chiffre après la virgule
-        pdArrondi = parseFloat(pdArrondi); // Convertir la chaîne arrondie en nombre
+        let pdArrondi_wlc = pd_wlc.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_wlc = parseFloat(pdArrondi_wlc); // Convertir la chaîne arrondie en nombre
 
         // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi; // Mettre à jour la valeur du dataset
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_wlc; // Mettre à jour la valeur du dataset
         myChart.update();  // Mettre à jour le graphique
     }
 });
@@ -368,10 +367,20 @@ document.getElementById("increase2").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 3, 100);
-        myChart.update();
-        increaseCablesFibre(pays, 25);
-        myChart.update();
+        
+        let amount = 15 ;
+        increaseCablesFibre(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_cf = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_cf = calculImage(score_cf);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_cf = pd_cf.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_cf = parseFloat(pdArrondi_cf); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_cf; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -380,10 +389,20 @@ document.getElementById("increase3").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 4, 100);
-        myChart.update();
-        increaseRouteur(pays, 25);
-        myChart.update();
+        
+        let amount = 4 ;
+        increaseRouteur(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_rt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_rt = calculImage(score_rt);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_rt = pd_rt.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_rt = parseFloat(pdArrondi_rt); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_rt; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -392,10 +411,20 @@ document.getElementById("increase4").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 5, 100);
-        myChart.update();
-        increaseRepeteurs(pays, 25);
-        myChart.update();
+        
+        let amount = 40 ;
+        increaseRepeteurs(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_rpt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_rpt = calculImage(score_rpt);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_rpt = pd_rpt.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_rpt = parseFloat(pdArrondi_rpt); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_rpt; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -404,10 +433,20 @@ document.getElementById("increase5").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 5, 100);
-        myChart.update();
-        increaseDrones(pays, 25);
-        myChart.update();
+        
+        let amount = 3 ;
+        increaseDrones(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_dr = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_dr = calculImage(score_dr);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_dr = pd_dr.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_dr = parseFloat(pdArrondi_dr); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_dr; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -416,10 +455,20 @@ document.getElementById("increase6").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 5, 100);
-        myChart.update();
-        increaseIngenieurs(pays, 25);
-        myChart.update();
+        
+        let amount = 20 ;
+        increaseIngenieurs(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_inge = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_inge = calculImage(score_inge);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_inge = pd_inge.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_inge = parseFloat(pdArrondi_inge); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_inge; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -428,10 +477,20 @@ document.getElementById("increase7").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 5, 100);
-        myChart.update();
-        increaseCybercafes(pays, 25);
-        myChart.update();
+        
+        let amount = 1 ;
+        increaseCybercafes(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_cyb = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_cyb = calculImage(score_cyb);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_cyb = pd_cyb.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_cyb = parseFloat(pdArrondi_cyb); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_cyb; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -440,10 +499,20 @@ document.getElementById("increase8").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 5, 100);
-        myChart.update();
-        increaseSatellites(pays, 25);
-        myChart.update();
+        
+        let amount = 1 ;
+        increaseSatellites(pays, amount);
+        updateInfo(pays);  // Mettre à jour les infos
+        // Recalculer le score et l'image
+        let score_satt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_satt = calculImage(score_satt);  // Calculer l'image
+        // Arrondir la valeur calculée au dixième près
+        let pdArrondi_satt = pd_satt.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_satt = parseFloat(pdArrondi_satt); // Convertir la chaîne arrondie en nombre
+
+        // Mettre à jour le graphique avec la nouvelle valeur arrondie
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_satt; // Mettre à jour la valeur du dataset
+        myChart.update();  // Mettre à jour le graphique
     }
 });
 
@@ -452,10 +521,11 @@ document.getElementById("increase9").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 15, 100);
-        myChart.update();
+       
         fibre_optique[pays] = 1; // On force la valeur à 1
         fibre_optiqueElement.textContent = `Fibre Optique : Oui`; // On met à jour l'affichage
+        updateInfo(pays);
+        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 15, 100);
         myChart.update();
     }
 });
@@ -465,9 +535,10 @@ document.getElementById("increase0").addEventListener("click", () => {
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
+        alacinqg[pays] = 1; // On force la valeur à 1
+        alacinqgElement.textContent = `5G : Oui`; // On met à jour l'affichage
+        updateInfo(pays);
         myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 15, 100);
-        myChart.update();
-        increaseAlacinqg(pays, 25);
         myChart.update();
     }
 });
