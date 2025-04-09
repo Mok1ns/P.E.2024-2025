@@ -12,15 +12,15 @@ let WLC = {
     "kenya": 30000,
     "burundi": 18000
 };
-
-let cables_fibre = {
-    "usa": 610000,  // Updated from dataPays
-    "japon": 450000,  // Updated from dataPays
-    "france": 390000,  // Updated from dataPays
-    "bangladesh": 26000,  // Updated from dataPays
-    "kenya": 24000,  // Updated from dataPays
-    "burundi": 1000  // Updated from dataPays
+let data_centers = {
+    "usa": 2000,  // Example value for USA
+    "japon": 230,  // Example value for Japan
+    "france": 300,  // Example value for France
+    "bangladesh": 70,  // Example value for Bangladesh
+    "kenya": 50,  // Example value for Kenya
+    "burundi": 10  // Example value for Burundi
 };
+
 
 let routeurs = {
     "usa": 160000000,  // Updated from dataPays
@@ -94,14 +94,6 @@ let alacinqg = {
     "burundi": 0  // Updated from dataPays
 };
 
-let data_centers = {
-    "usa": 2000,  // Example value for USA
-    "japon": 230,  // Example value for Japan
-    "france": 300,  // Example value for France
-    "bangladesh": 70,  // Example value for Bangladesh
-    "kenya": 50,  // Example value for Kenya
-    "burundi": 10  // Example value for Burundi
-};
 
 
 const data = {
@@ -153,28 +145,17 @@ function updateInfo(country) {
     let content = document.getElementById("content");
     let textes = content.querySelectorAll("h5");
 
-    // Mise à jour du nombre de WLC
-    if (WLC[pays] !== undefined) {
-        let wlcElement = textes[4]; // Trouver l'élément pour WLC (par exemple, dans la première position)
-        wlcElement.textContent = `Nombre de WLC : ${WLC[pays]}`;
-    }
-
     // Mise à jour du nombre de routeurs
     if (routeurs[pays] !== undefined) {
         let routeursElement = textes[3]; // Trouver l'élément pour routeurs (par exemple, dans la deuxième position)
         routeursElement.textContent = `Nombre de routeurs : ${routeurs[pays]}`;
     }
 
-    // Mise à jour du nombre de câbles fibre
-    if (cables_fibre[pays] !== undefined) {
-        let cablesFibreElement = textes[7]; // Trouver l'élément pour câbles fibre (par exemple, dans la troisième position)
-        cablesFibreElement.textContent = `Nombre de câbles fibre optique : ${cables_fibre[pays]}`;
-    }
 
-    // Mise à jour du nombre de satellites
-    if (satellites[pays] !== undefined) {
-        let satellitesElement = textes[11]; // Trouver l'élément pour satellites (par exemple, dans la quatrième position)
-        satellitesElement.textContent = `Nombre de satellites : ${satellites[pays]}`;
+    // Mise à jour du nombre de WLC
+    if (WLC[pays] !== undefined) {
+        let wlcElement = textes[4]; // Trouver l'élément pour WLC (par exemple, dans la première position)
+        wlcElement.textContent = `Nombre de WLC : ${WLC[pays]}`;
     }
 
     // Mise à jour du nombre de data centers
@@ -183,37 +164,56 @@ function updateInfo(country) {
         dataCentersElement.textContent = `Nombre de data centers : ${data_centers[pays]}`;
     }
 
-    // Mise à jour du nombre de drones
+    if (repeteurs[pays] !== undefined) {
+        let repeteursElement = textes[6]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        repeteursElement.textContent = `Nombre de répéteurs : ${repeteurs[pays]}`;   
+    }
+
+
     if (drones[pays] !== undefined) {
-        let dronesElement = textes[8]; // Trouver l'élément pour drones (par exemple, dans la sixième position)
+        let dronesElement = textes[7]; // Trouver l'élément pour drones (par exemple, dans la sixième position)
         dronesElement.textContent = `Nombre de drones : ${drones[pays]}`;
     }
 
+   
+
     // Mise à jour du nombre de cybercafés
     if (cybercafes[pays] !== undefined) {
-        let cybercafesElement = textes[9]; // Trouver l'élément pour cybercafés (par exemple, dans la septième position)
+        let cybercafesElement = textes[8]; // Trouver l'élément pour cybercafés (par exemple, dans la septième position)
         cybercafesElement.textContent = `Nombre de cybercafés : ${cybercafes[pays]}`;
     }
 
     // Mise à jour du nombre d'ingénieurs
     if (ingenieurs[pays] !== undefined) {
-        let ingenieursElement = textes[10]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let ingenieursElement = textes[9]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
         ingenieursElement.textContent = `Nombre d'ingénieurs : ${ingenieurs[pays]}`;
     }
 
+    // Mise à jour du nombre de satellites
+    if (satellites[pays] !== undefined) {
+        let satellitesElement = textes[10]; // Trouver l'élément pour satellites (par exemple, dans la quatrième position)
+        satellitesElement.textContent = `Nombre de satellites : ${satellites[pays]}`;
+    }
+
     if (fibre_optique[pays] !== undefined) {
-        let fibre_optiqueElement = textes[12]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let fibre_optiqueElement = textes[11]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
         fibre_optiqueElement.textContent = `Fibre Optique : ${fibre_optique[pays] === 1 ? "Oui" : "Non"}`;
     }
 
     if (alacinqg[pays] !== undefined) {
-        let alacinqgElement = textes[14]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let alacinqgElement = textes[12]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
         alacinqgElement.textContent = `Alacinqg : ${alacinqg[pays] === 1 ? "Oui" : "Non"}`;
     }
-
-    if (repeteurs[pays] !== undefined) {
-        let repeteursElement = textes[6]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
-        repeteursElement.textContent = `Nombre de répéteurs : ${repeteurs[pays]}`;
+    let score_cg = calculerX(pays);  
+    let  pourcentage_brut= calculImage(score_cg); 
+        
+    let pourcentage_arrondi = pourcentage_brut.toFixed(5); 
+    pourcentage_arrondi  = parseFloat(pourcentage_arrondi ); 
+ 
+    if (pourcentage_arrondi !== undefined) {
+        let cinqgElement = textes[13]; 
+        console.log(pourcentage_arrondi)
+        cinqgElement.textContent = `Accès à Internet ${pourcentage_arrondi}%`;
     }
 }
 
@@ -224,7 +224,6 @@ function calculerX(pays){
     let x =
     400000 * (satellites[pays] || 0) +
     10 * (WLC[pays] || 0) +
-    8 * (cables_fibre[pays] || 0) +
     12 * (repeteurs[pays] || 0) +
     25 * (drones[pays] || 0) +
     100000 * (data_centers[pays] || 0) +
@@ -270,10 +269,11 @@ function increaseRouteur(country, amount) {
     }
 }
 
-function increaseCablesFibre(country, amount) {
+function increaseDatacenters(country, amount) {
+    console.log("augmenter")
     let pays = country.toLowerCase();
-    if (cables_fibre[pays] !== undefined) {
-        cables_fibre[pays] += amount; // Ajouter l'amount à cables_fibre du pays
+    if (data_centers[pays] !== undefined) {
+        data_centers[pays] += amount; // Ajouter l'amount 
         updateInfo(pays); // Mettre à jour les informations
     }
 }
@@ -335,20 +335,14 @@ function increaseAlacinqg(country, amount) {
     }
 }
 
-
-
-console.log("WLC:", WLC[pays]);
-console.log("Routeurs:", routeurs[pays]);
-
 document.getElementById("increase").addEventListener("click", () => {
     let pays = document.getElementById("pays").value.toLowerCase();
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
         
-        let amount = 25 ;
+        let amount = 2500 ;
         increaseWLC(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_wlc = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_wlc = calculImage(score_wlc);  // Calculer l'image
@@ -368,18 +362,17 @@ document.getElementById("increase2").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 15 ;
-        increaseCablesFibre(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
+        let amount = 10 ;
+        increaseDatacenters(pays, amount);
         // Recalculer le score et l'image
-        let score_cf = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_cf = calculImage(score_cf);  // Calculer l'image
+        let score_dc = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
+        let pd_dc = calculImage(score_dc);  // Calculer l'image
         // Arrondir la valeur calculée au dixième près
-        let pdArrondi_cf = pd_cf.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_cf = parseFloat(pdArrondi_cf); // Convertir la chaîne arrondie en nombre
+        let pdArrondi_dc = pd_dc.toFixed(4);  // Arrondir à un chiffre après la virgule
+        pdArrondi_dc = parseFloat(pdArrondi_dc); // Convertir la chaîne arrondie en nombre
 
         // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_cf; // Mettre à jour la valeur du dataset
+        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_dc; // Mettre à jour la valeur du dataset
         myChart.update();  // Mettre à jour le graphique
     }
 });
@@ -390,9 +383,8 @@ document.getElementById("increase3").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 4 ;
+        let amount = 4000 ;
         increaseRouteur(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_rt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_rt = calculImage(score_rt);  // Calculer l'image
@@ -412,9 +404,8 @@ document.getElementById("increase4").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 40 ;
+        let amount = 5000 ;
         increaseRepeteurs(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_rpt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_rpt = calculImage(score_rpt);  // Calculer l'image
@@ -434,9 +425,8 @@ document.getElementById("increase5").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 3 ;
+        let amount = 50 ;
         increaseDrones(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_dr = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_dr = calculImage(score_dr);  // Calculer l'image
@@ -456,9 +446,8 @@ document.getElementById("increase6").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 20 ;
+        let amount = 2000 ;
         increaseIngenieurs(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_inge = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_inge = calculImage(score_inge);  // Calculer l'image
@@ -478,9 +467,8 @@ document.getElementById("increase7").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 1 ;
+        let amount = 10 ;
         increaseCybercafes(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_cyb = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_cyb = calculImage(score_cyb);  // Calculer l'image
@@ -500,9 +488,8 @@ document.getElementById("increase8").addEventListener("click", () => {
 
     if (selectedIndex !== -1) {
         
-        let amount = 1 ;
+        let amount = 4 ;
         increaseSatellites(pays, amount);
-        updateInfo(pays);  // Mettre à jour les infos
         // Recalculer le score et l'image
         let score_satt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_satt = calculImage(score_satt);  // Calculer l'image
@@ -563,7 +550,7 @@ document.getElementById("toggle").addEventListener("click", () => {
 
     let textes = content.querySelectorAll("h5");
     if (textes.length === 0) {
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 14; i++) {
             let h5 = document.createElement("h5");
             content.appendChild(h5);
         }
@@ -580,7 +567,6 @@ document.getElementById("toggle").addEventListener("click", () => {
             WLC: "130000", 
             data_centers: "2000", 
             repeteurs: "200000", 
-            cables_fibre: "610000", 
             drones: "100", 
             cybercafes: "2000", 
             ingenieurs: "350000", 
@@ -597,7 +583,6 @@ document.getElementById("toggle").addEventListener("click", () => {
             WLC: "80000", 
             data_centers: "230", 
             repeteurs: "120000", 
-            cables_fibre: "450000", 
             drones: "300", 
             cybercafes: "1200", 
             ingenieurs: "323000", 
@@ -614,7 +599,6 @@ document.getElementById("toggle").addEventListener("click", () => {
             WLC: "78000", 
             data_centers: "300", 
             repeteurs: "135000", 
-            cables_fibre: "390000", 
             drones: "250", 
             cybercafes: "600", 
             ingenieurs: "187000", 
@@ -630,8 +614,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             routeurs: "10000000", 
             WLC: "22000", 
             data_centers: "70", 
-            repeteurs: "13000", 
-            cables_fibre: "26000", 
+            repeteurs: "13000",  
             drones: "400", 
             cybercafes: "80", 
             ingenieurs: "27000", 
@@ -648,7 +631,6 @@ document.getElementById("toggle").addEventListener("click", () => {
             WLC: "30000", 
             data_centers: "50", 
             repeteurs: "20000", 
-            cables_fibre: "24000", 
             drones: "650", 
             cybercafes: "90", 
             ingenieurs: "14000", 
@@ -664,8 +646,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             routeurs: "1200000", 
             WLC: "18000", 
             data_centers: "10", 
-            repeteurs: "6000", 
-            cables_fibre: "1000", 
+            repeteurs: "6000",  
             drones: "400", 
             cybercafes: "70", 
             ingenieurs: "11500", 
@@ -685,14 +666,13 @@ document.getElementById("toggle").addEventListener("click", () => {
         textes[4].textContent = `Nombre de WLC : ${dataPays[pays].WLC}`;
         textes[5].textContent = `Nombre de data centers : ${dataPays[pays].data_centers}`;
         textes[6].textContent = `Nombre de répéteurs : ${dataPays[pays].repeteurs}`;
-        textes[7].textContent = `Nombre de câbles fibre optique : ${dataPays[pays].cables_fibre}`;
-        textes[8].textContent = `Nombre de drones : ${dataPays[pays].drones}`;
-        textes[9].textContent = `Nombre de cybercafés : ${dataPays[pays].cybercafes}`;
-        textes[10].textContent = `Nombre d'ingénieurs : ${dataPays[pays].ingenieurs}`;
-        textes[11].textContent = `Nombre de satellites : ${dataPays[pays].satellites}`;
-        textes[12].textContent = `Fibre Optique : ${dataPays[pays].fibre_optique}`;
-        textes[14].textContent = `Alacinqg : ${dataPays[pays].alacinqg}`;
-        textes[15].textContent = `Accès à Internet : ${myChart.data.datasets[0].data[selectedIndex]}%`;
+        textes[7].textContent = `Nombre de drones : ${dataPays[pays].drones}`;
+        textes[8].textContent = `Nombre de cybercafés : ${dataPays[pays].cybercafes}`;
+        textes[9].textContent = `Nombre d'ingénieurs : ${dataPays[pays].ingenieurs}`;
+        textes[10].textContent = `Nombre de satellites : ${dataPays[pays].satellites}`;
+        textes[11].textContent = `Fibre Optique : ${dataPays[pays].fibre_optique}`;
+        textes[12].textContent = `Alacinqg : ${dataPays[pays].alacinqg}`;
+        textes[13].textContent = `Accès à Internet : ${myChart.data.datasets[0].data[selectedIndex]}%`;
     }
 
 });
