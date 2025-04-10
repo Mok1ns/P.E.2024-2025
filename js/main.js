@@ -136,6 +136,7 @@ function highlightCountry(country) {
     }
 }
 
+
 document.getElementById("pays").addEventListener("change", function () {
     highlightCountry(this.value);
 });
@@ -145,24 +146,26 @@ function updateInfo(country) {
     let content = document.getElementById("content");
     let textes = content.querySelectorAll("h5");
 
-    // Mise à jour du nombre de routeurs
-    if (routeurs[pays] !== undefined) {
-        let routeursElement = textes[3]; // Trouver l'élément pour routeurs (par exemple, dans la deuxième position)
-        routeursElement.textContent = `Nombre de routeurs : ${routeurs[pays]}`;
-    }
-
+    
 
     // Mise à jour du nombre de WLC
     if (WLC[pays] !== undefined) {
-        let wlcElement = textes[4]; // Trouver l'élément pour WLC (par exemple, dans la première position)
+        let wlcElement = textes[3]; // Trouver l'élément pour WLC (par exemple, dans la première position)
         wlcElement.textContent = `Nombre de WLC : ${WLC[pays]}`;
     }
 
     // Mise à jour du nombre de data centers
     if (data_centers[pays] !== undefined) {
-        let dataCentersElement = textes[5]; // Trouver l'élément pour data centers (par exemple, dans la cinquième position)
+        let dataCentersElement = textes[4]; // Trouver l'élément pour data centers (par exemple, dans la cinquième position)
         dataCentersElement.textContent = `Nombre de data centers : ${data_centers[pays]}`;
     }
+
+    // Mise à jour du nombre de routeurs
+    if (routeurs[pays] !== undefined) {
+        let routeursElement = textes[5]; // Trouver l'élément pour routeurs (par exemple, dans la deuxième position)
+        routeursElement.textContent = `Nombre de routeurs : ${routeurs[pays]}`;
+    }
+
 
     if (repeteurs[pays] !== undefined) {
         let repeteursElement = textes[6]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
@@ -174,20 +177,20 @@ function updateInfo(country) {
         let dronesElement = textes[7]; // Trouver l'élément pour drones (par exemple, dans la sixième position)
         dronesElement.textContent = `Nombre de drones : ${drones[pays]}`;
     }
-
-   
+    
+    // Mise à jour du nombre d'ingénieurs
+    if (ingenieurs[pays] !== undefined) {
+        let ingenieursElement = textes[8]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        ingenieursElement.textContent = `Nombre d'ingénieurs : ${ingenieurs[pays]}`;
+    } 
 
     // Mise à jour du nombre de cybercafés
     if (cybercafes[pays] !== undefined) {
-        let cybercafesElement = textes[8]; // Trouver l'élément pour cybercafés (par exemple, dans la septième position)
+        let cybercafesElement = textes[9]; // Trouver l'élément pour cybercafés (par exemple, dans la septième position)
         cybercafesElement.textContent = `Nombre de cybercafés : ${cybercafes[pays]}`;
     }
 
-    // Mise à jour du nombre d'ingénieurs
-    if (ingenieurs[pays] !== undefined) {
-        let ingenieursElement = textes[9]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
-        ingenieursElement.textContent = `Nombre d'ingénieurs : ${ingenieurs[pays]}`;
-    }
+    
 
     // Mise à jour du nombre de satellites
     if (satellites[pays] !== undefined) {
@@ -207,13 +210,32 @@ function updateInfo(country) {
     let score_cg = calculerX(pays);  
     let  pourcentage_brut= calculImage(score_cg); 
         
-    let pourcentage_arrondi = pourcentage_brut.toFixed(5); 
+    let pourcentage_arrondi = pourcentage_brut.toFixed(2); 
     pourcentage_arrondi  = parseFloat(pourcentage_arrondi ); 
  
     if (pourcentage_arrondi !== undefined) {
         let cinqgElement = textes[13]; 
-        console.log(pourcentage_arrondi)
         cinqgElement.textContent = `Accès à Internet ${pourcentage_arrondi}%`;
+    }
+    disable_button(pays);
+}
+
+function disable_button(pays){
+    if (alacinqg[pays]==0){
+        document.getElementById("increase0").className = "";
+        document.getElementById("increase0").disabled = false;
+    }
+    if (alacinqg[pays]==1){
+        document.getElementById("increase0").classList.add("desactivated")
+        document.getElementById("increase0").disabled = true;
+    }
+    if (fibre_optique[pays]==0){
+        document.getElementById("increase9").className = "";
+        document.getElementById("increase9").disabled = false;
+    }
+    if (fibre_optique[pays]==1){
+        document.getElementById("increase9").classList.add("desactivated")
+        document.getElementById("increase9").disabled = true;
     }
 }
 
@@ -252,294 +274,101 @@ function calculImage(x) {
     return result;
 }
 
-
-function increaseWLC(country, amount) {
+function increaseRessource(resourceName, country, amount) {
     let pays = country.toLowerCase();
-    if (WLC[pays] !== undefined) {
-        WLC[pays] += amount; // Ajouter l'amount à WLC du pays
-        updateInfo(pays); // Mettre à jour les informations
+    if (resourceName[pays] !== undefined) {
+        resourceName[pays] += amount;
     }
+    updateInfo(pays);
 }
-
-function increaseRouteur(country, amount) {
-    let pays = country.toLowerCase();
-    if (routeurs[pays] !== undefined) {
-        routeurs[pays] += amount; // Ajouter l'amount à routeur du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseDatacenters(country, amount) {
-    console.log("augmenter")
-    let pays = country.toLowerCase();
-    if (data_centers[pays] !== undefined) {
-        data_centers[pays] += amount; // Ajouter l'amount 
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseRepeteurs(country, amount) {
-    let pays = country.toLowerCase();
-    if (repeteurs[pays] !== undefined) {
-        repeteurs[pays] += amount; // Ajouter l'amount à répéteurs du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseDrones(country, amount) {
-    let pays = country.toLowerCase();
-    if (drones[pays] !== undefined) {
-        drones[pays] += amount; // Ajouter l'amount à drones du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseIngenieurs(country, amount) {
-    let pays = country.toLowerCase();
-    if (ingenieurs[pays] !== undefined) {
-        ingenieurs[pays] += amount; // Ajouter l'amount à ingénieurs du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseCybercafes(country, amount) {
-    let pays = country.toLowerCase();
-    if (cybercafes[pays] !== undefined) {
-        cybercafes[pays] += amount; // Ajouter l'amount à cybercafés du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseSatellites(country, amount) {
-    let pays = country.toLowerCase();
-    if (satellites[pays] !== undefined) {
-        satellites[pays] += amount; // Ajouter l'amount à satellites du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-function increaseOptique(country, amount) {
-    let pays = country.toLowerCase();
-    if (fibre_optique[pays] !== undefined) {
-        fibre_optique[pays] += amount; // Ajouter l'amount à satellites du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-
-function increaseAlacinqg(country, amount) {
-    let pays = country.toLowerCase();
-    if (alacinqg[pays] !== undefined) {
-        alacinqg[pays] += amount; // Ajouter l'amount à satellites du pays
-        updateInfo(pays); // Mettre à jour les informations
-    }
-}
-
-document.getElementById("increase").addEventListener("click", () => {
+function actualize_graphic(button_selected,amount){
     let pays = document.getElementById("pays").value.toLowerCase();
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
 
     if (selectedIndex !== -1) {
         
-        let amount = 2500 ;
-        increaseWLC(pays, amount);
+        increaseRessource(button_selected, pays, amount);
         // Recalculer le score et l'image
         let score_wlc = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
         let pd_wlc = calculImage(score_wlc);  // Calculer l'image
         // Arrondir la valeur calculée au dixième près
-        let pdArrondi_wlc = pd_wlc.toFixed(4);  // Arrondir à un chiffre après la virgule
+        let pdArrondi_wlc = pd_wlc.toFixed(2);  // Arrondir à un chiffre après la virgule
         pdArrondi_wlc = parseFloat(pdArrondi_wlc); // Convertir la chaîne arrondie en nombre
 
         // Mettre à jour le graphique avec la nouvelle valeur arrondie
         myChart.data.datasets[0].data[selectedIndex] = pdArrondi_wlc; // Mettre à jour la valeur du dataset
         myChart.update();  // Mettre à jour le graphique
     }
+}
+document.getElementById("increase").addEventListener("click", () => {
+    let button_selected = WLC;
+    actualize_graphic(button_selected,100000);
 });
 
 document.getElementById("increase2").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 10 ;
-        increaseDatacenters(pays, amount);
-        // Recalculer le score et l'image
-        let score_dc = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_dc = calculImage(score_dc);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_dc = pd_dc.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_dc = parseFloat(pdArrondi_dc); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_dc; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = data_centers;
+    actualize_graphic(button_selected,50);
 });
 
 document.getElementById("increase3").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 4000 ;
-        increaseRouteur(pays, amount);
-        // Recalculer le score et l'image
-        let score_rt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_rt = calculImage(score_rt);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_rt = pd_rt.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_rt = parseFloat(pdArrondi_rt); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_rt; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = routeurs;
+    actualize_graphic(button_selected,120000);
 });
 
 document.getElementById("increase4").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 5000 ;
-        increaseRepeteurs(pays, amount);
-        // Recalculer le score et l'image
-        let score_rpt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_rpt = calculImage(score_rpt);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_rpt = pd_rpt.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_rpt = parseFloat(pdArrondi_rpt); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_rpt; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = repeteurs;
+    actualize_graphic(button_selected,150000);
 });
 
 document.getElementById("increase5").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 50 ;
-        increaseDrones(pays, amount);
-        // Recalculer le score et l'image
-        let score_dr = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_dr = calculImage(score_dr);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_dr = pd_dr.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_dr = parseFloat(pdArrondi_dr); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_dr; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = drones;
+    actualize_graphic(button_selected,800);
 });
 
 document.getElementById("increase6").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 2000 ;
-        increaseIngenieurs(pays, amount);
-        // Recalculer le score et l'image
-        let score_inge = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_inge = calculImage(score_inge);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_inge = pd_inge.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_inge = parseFloat(pdArrondi_inge); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_inge; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = ingenieurs;
+    actualize_graphic(button_selected,25000);
 });
 
 document.getElementById("increase7").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 10 ;
-        increaseCybercafes(pays, amount);
-        // Recalculer le score et l'image
-        let score_cyb = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_cyb = calculImage(score_cyb);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_cyb = pd_cyb.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_cyb = parseFloat(pdArrondi_cyb); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_cyb; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = cybercafes;
+    actualize_graphic(button_selected,1000);
 });
 
 document.getElementById("increase8").addEventListener("click", () => {
-    let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        
-        let amount = 4 ;
-        increaseSatellites(pays, amount);
-        // Recalculer le score et l'image
-        let score_satt = calculerX(pays);  // Recalculer la valeur de X après l'augmentation
-        let pd_satt = calculImage(score_satt);  // Calculer l'image
-        // Arrondir la valeur calculée au dixième près
-        let pdArrondi_satt = pd_satt.toFixed(4);  // Arrondir à un chiffre après la virgule
-        pdArrondi_satt = parseFloat(pdArrondi_satt); // Convertir la chaîne arrondie en nombre
-
-        // Mettre à jour le graphique avec la nouvelle valeur arrondie
-        myChart.data.datasets[0].data[selectedIndex] = pdArrondi_satt; // Mettre à jour la valeur du dataset
-        myChart.update();  // Mettre à jour le graphique
-    }
+    let button_selected = satellites;
+    actualize_graphic(button_selected,15);
 });
 
 document.getElementById("increase9").addEventListener("click", () => {
     let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-       
-        fibre_optique[pays] = 1; // On force la valeur à 1
-        fibre_optiqueElement.textContent = `Fibre Optique : Oui`; // On met à jour l'affichage
-        updateInfo(pays);
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 15, 100);
-        myChart.update();
+    let button_selected = fibre_optique;
+    if (button_selected[pays]==1){
+        actualize_graphic(button_selected,0);
     }
+    if (fibre_optique[pays]==0){
+        actualize_graphic(button_selected,1);
+        }
 });
 
 document.getElementById("increase0").addEventListener("click", () => {
     let pays = document.getElementById("pays").value.toLowerCase();
-    let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
-    if (selectedIndex !== -1) {
-        alacinqg[pays] = 1; // On force la valeur à 1
-        alacinqgElement.textContent = `5G : Oui`; // On met à jour l'affichage
-        updateInfo(pays);
-        myChart.data.datasets[0].data[selectedIndex] = Math.min(myChart.data.datasets[0].data[selectedIndex] + 15, 100);
-        myChart.update();
+    let button_selected = alacinqg;
+    console.log(alacinqg[pays]);
+    if (alacinqg[pays]==1){
+        actualize_graphic(button_selected,0);
+    }
+    if (alacinqg[pays]==0){
+        actualize_graphic(button_selected,1);
     }
 });
 
 document.getElementById("toggle").addEventListener("click", () => {
     let content = document.getElementById("content");
     let pays = document.getElementById("pays").value.toLowerCase();
-
     if (!pays) return;
-
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === pays);
-
     if (selectedIndex === -1) return;
-
     let img = content.querySelector("img");
     if (!img) {
         img = document.createElement("img");
@@ -556,6 +385,7 @@ document.getElementById("toggle").addEventListener("click", () => {
         }
         textes = content.querySelectorAll("h5");
     }
+    disable_button(pays);
 
     let dataPays = {
         "usa": { 
@@ -662,17 +492,18 @@ document.getElementById("toggle").addEventListener("click", () => {
         textes[0].textContent = `Nom du pays : ${dataPays[pays].nom}`;
         textes[1].textContent = `PIB : ${dataPays[pays].pib}`;
         textes[2].textContent = `Nombre d'habitants : ${dataPays[pays].habitants}`;
-        textes[3].textContent = `Nombre de routeurs : ${dataPays[pays].routeurs}`;
-        textes[4].textContent = `Nombre de WLC : ${dataPays[pays].WLC}`;
-        textes[5].textContent = `Nombre de data centers : ${dataPays[pays].data_centers}`;
+        textes[3].textContent = `Nombre de WLC : ${dataPays[pays].WLC}`;
+        textes[4].textContent = `Nombre de data centers : ${dataPays[pays].data_centers}`;
+        textes[5].textContent = `Nombre de routeurs : ${dataPays[pays].routeurs}`;
         textes[6].textContent = `Nombre de répéteurs : ${dataPays[pays].repeteurs}`;
         textes[7].textContent = `Nombre de drones : ${dataPays[pays].drones}`;
-        textes[8].textContent = `Nombre de cybercafés : ${dataPays[pays].cybercafes}`;
         textes[9].textContent = `Nombre d'ingénieurs : ${dataPays[pays].ingenieurs}`;
+        textes[8].textContent = `Nombre de cybercafés : ${dataPays[pays].cybercafes}`;
         textes[10].textContent = `Nombre de satellites : ${dataPays[pays].satellites}`;
         textes[11].textContent = `Fibre Optique : ${dataPays[pays].fibre_optique}`;
         textes[12].textContent = `Alacinqg : ${dataPays[pays].alacinqg}`;
         textes[13].textContent = `Accès à Internet : ${myChart.data.datasets[0].data[selectedIndex]}%`;
+        updateInfo(pays);
     }
 
 });
