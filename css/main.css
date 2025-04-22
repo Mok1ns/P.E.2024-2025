@@ -20,6 +20,25 @@
 */
 
 
+section.intro div{
+    width: 500px;
+    
+}
+
+section.intro div p{
+    background-color: red;
+    text-align: center;
+    height: 1000px;
+}
+
+
+
+
+
+
+
+
+
 header{
     display: flex;
     justify-content: space-between;
@@ -86,7 +105,9 @@ article{
     background: rgba(33, 104, 151, 0.65);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    height: 800px;
+    min-height: 10vh;
+    padding-bottom: 50px;
+
 }
 
 
@@ -155,6 +176,15 @@ div.action button.desactivated {
 
 div.action button:hover {
     background: #00796b;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #00d1b2;
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 
