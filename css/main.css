@@ -20,18 +20,67 @@
 */
 
 
-section.intro div{
-    width: 500px;
-    
+.page-garde {
+    position: fixed;
+    z-index: 9999;
+    background: linear-gradient(145deg, #185a9d, #43cea2);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
-section.intro div p{
-    background-color: red;
+.contenu-garde {
     text-align: center;
-    height: 1000px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
+.contenu-garde img {
+    width: 180px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 10px #000);
+}
 
+.contenu-garde h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.contenu-garde p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.contenu-garde button {
+    padding: 12px 30px;
+    background-color: #00d1b2;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+}
+
+.contenu-garde button:hover {
+    background-color: #00796b;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
 
 
 
@@ -219,7 +268,7 @@ select{
     border-radius: 10px;
     padding: 20px;
     width: 350px;
-    height: 630px;
+    height: 620px;
     margin-right: 100px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);

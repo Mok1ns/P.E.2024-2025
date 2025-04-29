@@ -507,3 +507,11 @@ document.getElementById("toggle").addEventListener("click", () => {
     }
 
 });
+
+function fermerPageGarde() {
+    const page = document.getElementById('pageGarde');
+    page.style.animation = 'fadeOut 1s ease forwards';
+    setTimeout(() => {
+        page.style.display = 'none';
+    }, 1000);
+}
