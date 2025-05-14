@@ -1,9 +1,10 @@
 
 
 const ctx = document.getElementById("internetChart").getContext("2d");
+//permet de récupérer la zone du graphique et la préparer contexte de dessin 2D
 
-
-
+//Variables sous forme d'un dictionnaire qui contient les données relatives aux pays
+//-------------------------------------------------------------------------
 let WLC = {
     "usa": 130000,
     "japon": 80000,
@@ -94,8 +95,8 @@ let alacinqg = {
     "burundi": 0  // Updated from dataPays
 };
 
-
-
+//-------------------------------------------------------------------------
+//Permet d'initialiser le graphique avec des valeurs de base
 const data = {
     labels: ["USA", "Japon", "France", "Bangladesh", "Kenya", "Burundi"],
     datasets: [{
@@ -105,7 +106,7 @@ const data = {
     }]
 };
 
-
+//configuration pour un graphique Chart.js, une bibliothèque JavaScript utilisée pour créer des graphiques interactifs
 const config = {
     type: "bar",
     data: data,
@@ -123,12 +124,15 @@ const config = {
     }
 };
 
+//sert à créer et afficher un graphique sur une page web en utilisant la bibliothèque Chart.js
 let myChart = new Chart(ctx, config);
 
+//permet de mettre en avant l'élément du graphique que l'on a sélectionné
 function highlightCountry(country) {
+    //Recherche dans la liste des labels pour trouver l'index du pays qui correspond à country
     let selectedIndex = myChart.data.labels.findIndex(label => label.toLowerCase() === country.toLowerCase());
-
     if (selectedIndex !== -1) {
+        //On parcourt les pays: si celui-ci correspond à country, on le met en cyan, sinon on le met en gris clair
         myChart.data.datasets[0].backgroundColor = myChart.data.labels.map((label, index) =>
             index === selectedIndex ? "cyan" : "lightgray"
         );
@@ -136,57 +140,68 @@ function highlightCountry(country) {
     }
 }
 
-
+//à chaque fois que l'on valide la sélection d'un pays, on le let en avant avec la fonction ci-dessus
 document.getElementById("pays").addEventListener("change", function () {
     highlightCountry(this.value);
 });
 
+//Fonction qui permet d'actualiser les changements que l'on a fait sur les infrastructures des pays
 function updateInfo(country) {
+    //convertit le nom d’un pays contenu dans la variable country en minuscule
     let pays = country.toLowerCase();
+    //sélectionne l'élément qui a l'id "content"
     let content = document.getElementById("content");
+    //récupère dans une variable tous les éléments <h5> se trouvant à l’intérieur de content
     let textes = content.querySelectorAll("h5");
 
     
 
     // Mise à jour du nombre de WLC
     if (WLC[pays] !== undefined) {
-        let wlcElement = textes[3]; // Trouver l'élément pour WLC (par exemple, dans la première position)
+        let wlcElement = textes[3]; // Récupère le texte qui donne le nombre de WLC
+        //Met à jour le nombre de WLC dans la balise affichée
         wlcElement.textContent = `Nombre de WLC : ${WLC[pays]}`;
     }
 
     // Mise à jour du nombre de data centers
     if (data_centers[pays] !== undefined) {
-        let dataCentersElement = textes[4]; // Trouver l'élément pour data centers (par exemple, dans la cinquième position)
+        let dataCentersElement = textes[4];// Récupère le texte qui donne le nombre de data centers
+        //Met à jour le nombre de data centers dans la balise affichée
         dataCentersElement.textContent = `Nombre de data centers : ${data_centers[pays]}`;
     }
 
     // Mise à jour du nombre de routeurs
     if (routeurs[pays] !== undefined) {
-        let routeursElement = textes[5]; // Trouver l'élément pour routeurs (par exemple, dans la deuxième position)
+        let routeursElement = textes[5]; // Récupère le texte qui donne le nombre de routeurs
+        //Met à jour le nombre de data centers dans la balise affichée
         routeursElement.textContent = `Nombre de routeurs : ${routeurs[pays]}`;
     }
 
 
     if (repeteurs[pays] !== undefined) {
-        let repeteursElement = textes[6]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let repeteursElement = textes[6]; // Récupère le texte qui donne le nombre de répéteurs wifi
+        //Met à jour le nombre de répéteurs wifi dans la balise affichée
         repeteursElement.textContent = `Nombre de répéteurs : ${repeteurs[pays]}`;   
     }
 
 
     if (drones[pays] !== undefined) {
-        let dronesElement = textes[7]; // Trouver l'élément pour drones (par exemple, dans la sixième position)
+        let dronesElement = textes[7]; // Récupère le texte qui donne le nombre de drônes relais wifi
+        //Met à jour le nombre de drônes relais wifi dans la balise affichée
         dronesElement.textContent = `Nombre de drones : ${drones[pays]}`;
     }
     
     // Mise à jour du nombre d'ingénieurs
     if (ingenieurs[pays] !== undefined) {
-        let ingenieursElement = textes[8]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let ingenieursElement = textes[8]; // Récupère le texte qui donne le nombre d'ingénieurs
+        //Met à jour le nombre d'ingénieurs dans la balise affichée
         ingenieursElement.textContent = `Nombre d'ingénieurs : ${ingenieurs[pays]}`;
     } 
 
     // Mise à jour du nombre de cybercafés
     if (cybercafes[pays] !== undefined) {
-        let cybercafesElement = textes[9]; // Trouver l'élément pour cybercafés (par exemple, dans la septième position)
+        let cybercafesElement = textes[9]; // Récupère le texte qui donne le nombre de cybercafés
+        //Met à jour le nombre de cybercafés dans la balise affichée
         cybercafesElement.textContent = `Nombre de cybercafés : ${cybercafes[pays]}`;
     }
 
@@ -194,17 +209,20 @@ function updateInfo(country) {
 
     // Mise à jour du nombre de satellites
     if (satellites[pays] !== undefined) {
-        let satellitesElement = textes[10]; // Trouver l'élément pour satellites (par exemple, dans la quatrième position)
+        let satellitesElement = textes[10]; // Récupère le texte qui donne le nombre de satellites
+        //Met à jour le nombre de satellites dans la balise affichée
         satellitesElement.textContent = `Nombre de satellites : ${satellites[pays]}`;
     }
 
     if (fibre_optique[pays] !== undefined) {
-        let fibre_optiqueElement = textes[11]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let fibre_optiqueElement = textes[11]; // Récupère le texte qui donne l'info de si le pays a la fibre optique oui ou non
+        //Met à jour si le pays a la fibre ou pas dans la balise affichée
         fibre_optiqueElement.textContent = `Fibre Optique : ${fibre_optique[pays] === 1 ? "Oui" : "Non"}`;
     }
 
     if (alacinqg[pays] !== undefined) {
-        let alacinqgElement = textes[12]; // Trouver l'élément pour ingénieurs (par exemple, dans la huitième position)
+        let alacinqgElement = textes[12]; // Récupère le texte qui donne l'info de si le pays a la 5G oui ou non
+        //Met à jour si le pays a la 5 G ou pas dans la balise affichée
         alacinqgElement.textContent = `Alacinqg : ${alacinqg[pays] === 1 ? "Oui" : "Non"}`;
     }
     let score_cg = calculerX(pays);  
