@@ -517,6 +517,7 @@ document.getElementById("toggle").addEventListener("click", () => {
 
 
     };
+    //Permet de remplir les balises h5 affichées avec le texte qui lui correspond
     if (dataPays[pays]) {
         img.src = dataPays[pays].img;
         textes[0].textContent = `Nom du pays : ${dataPays[pays].nom}`;
@@ -537,7 +538,7 @@ document.getElementById("toggle").addEventListener("click", () => {
     }
 
 });
-
+//fonction qui permet de gérer la page d'accueil du site, ainsi que son animation  
 function fermerPageGarde() {
     const page = document.getElementById('pageGarde');
     page.style.animation = 'fadeOut 1s ease forwards';
