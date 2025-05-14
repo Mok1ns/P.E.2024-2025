@@ -419,7 +419,7 @@ document.getElementById("toggle").addEventListener("click", () => {
     //permet de stocker les données sous une autre forme
     let dataPays = {
         "usa": { 
-            img: "../image/USA.png", 
+            img: "image/USA.png", 
             nom: "USA", 
             pib: "$27720000000", 
             habitants: "341000000", 
@@ -435,7 +435,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             alacinqg: "Oui"
         },
         "japon": { 
-            img: "../image/Japon.png", 
+            img: "image/Japon.png", 
             nom: "Japon", 
             pib: "$4204000000", 
             habitants: "125000000", 
@@ -451,7 +451,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             alacinqg: "Oui"
         },
         "france": { 
-            img: "../image/France.png", 
+            img: "image/France.png", 
             nom: "France", 
             pib: "$3052000000", 
             habitants: "68000000", 
@@ -467,7 +467,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             alacinqg: "Oui"
         },
         "bangladesh": { 
-            img: "../image/Bangladesh.png", 
+            img: "image/Bangladesh.png", 
             nom: "Bangladesh", 
             pib: "$437000000", 
             habitants: "171000000", 
@@ -483,7 +483,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             alacinqg: "Non"
         },
         "kenya": { 
-            img: "../image/Kenya.png", 
+            img: "image/Kenya.png", 
             nom: "Kenya", 
             pib: "$108000000", 
             habitants: "55340000", 
@@ -499,7 +499,7 @@ document.getElementById("toggle").addEventListener("click", () => {
             alacinqg: "Oui"
         },
         "burundi": { 
-            img: "../image/Burundi.png", 
+            img: "image/Burundi.png", 
             nom: "Burundi", 
             pib: "$2640000", 
             habitants: "13690000", 

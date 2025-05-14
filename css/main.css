@@ -1,25 +1,3 @@
-
-/*
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    div.graphique {
-        width: 90%;
-    }
-
-    div.boutons {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-*/
-
-
 .page-garde {
     position: fixed;
     z-index: 9999;
